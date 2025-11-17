@@ -1,9 +1,18 @@
 import React from 'react'
+import TodoItem from './TodoItem.jsx';
 
-export const Todos = () => {
+export const Todos = (props) => {
   return (
-    <section>
-      <p>Todos works!!</p>
-    </section>
+    <div className="container">
+      <h3 className="text-center my-3">Todos List</h3>
+      {props.todos && props.todos.length > 0 ? (
+        props.todos.map((todo) => (
+          <TodoItem todo={todo} key={todo.sno} />
+          
+        ))
+      ) : (
+        <p>No todos to display.</p>
+      )}
+    </div>
   )
 }
