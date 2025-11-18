@@ -1,14 +1,12 @@
+import React, { useState } from 'react';
 import './App.css';
 import Header from './MyComponents/Header.jsx';
 import { Todos } from './MyComponents/Todos.jsx';
 import { Footer } from './MyComponents/Footer.jsx';
+import AddTodo from "./MyComponents/AddTodo.jsx"
 
 function App() {
-  const onDelete = () => {
-    console.log("I am onDelete function");
-
-  }
-  let todos = [
+  const [todos, settodos] = useState([
     {
       sno: 1,
       title: "Go to the market",
@@ -27,11 +25,18 @@ function App() {
 
 
 
-  ]
+  ]);
+
+  const onDelete = (todo) => {
+    console.log("I am onDelete function", todo);
+    settodos(todos.filter((t) => t !== todo));
+  };
+
   return (
     <>
-      <Header title="My Todos List" searchBar={true} />
-      <Todos todos={todos} onDelete={onDelete}/>
+      <Header title="Smart Kishan" searchBar={true} />
+      <AddTodo />
+      <Todos todos={todos} onDelete={onDelete} />
       <Footer />
     </>
   );
