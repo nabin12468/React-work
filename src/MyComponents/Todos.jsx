@@ -2,9 +2,14 @@ import React from 'react'
 import TodoItem from './TodoItem.jsx';
 
 export const Todos = (props) => {
+  const myStyle = {
+    minHeight: "70vh",
+    margin: "40px auto"
+  };
+
   return (
-    <div className="container">
-      <h3 className=" my-3">Todos List</h3>
+    <div className="container" style={myStyle}>
+      <h3 className="my-3">Todos List</h3>
       {props.todos && props.todos.length > 0 ? (
         props.todos.map((todo) => (
           <TodoItem todo={todo} key={todo.sno} onDelete={props.onDelete} />
